@@ -30,15 +30,24 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+DEFAULT_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'chat'
 ]
+
+THIRD_PARTY_APPS = [
+    'channels',
+]
+
+LOCAL_APPS = [
+    'chat',
+]
+
+INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,6 +79,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangochatroom.wsgi.application'
 
+# Channels
+ASGI_APPLICATION = 'djangochatroom.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
